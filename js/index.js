@@ -1,13 +1,14 @@
-$(document).ready(function()
- {
+$(document).ready(function() {
     // Inicializar la base de datos
     var config = {
-        apiKey: "AIzaSyB73xrbbkWO5IiJcs8HR3vbdQJ171Sh6-w",
-    authDomain: "geoleaf-a1530.firebaseapp.com",
-    databaseURL: "https://geoleaf-a1530.firebaseio.com",
-    projectId: "geoleaf-a1530",
-    storageBucket: "geoleaf-a1530.appspot.com",
-    messagingSenderId: "719308462883"
+        apiKey: "AIzaSyCJBQBZr8lsxCOSe18-SOUw5VUI3n4x2-A",
+        authDomain: "confisalud-3e382.firebaseapp.com",
+        databaseURL: "https://confisalud-3e382.firebaseio.com",
+        projectId: "confisalud-3e382",
+        storageBucket: "confisalud-3e382.appspot.com",
+        messagingSenderId: "629122550546",
+        appId: "1:629122550546:web:0dad7ee8026377517c01cb",
+        measurementId: "G-PDTVJKVZ5H"
     };
 
     firebase.initializeApp(config);
@@ -15,9 +16,9 @@ $(document).ready(function()
     var database = firebase.database();
 
     // Fijarse que la ruta de partida ahora es la colección productos:
-    var referencia=database.ref("productos");
+    var referencia = database.ref("productos");
 
-    var productos={};
+    var productos = {};
 
     /*
     Evento: value
@@ -28,43 +29,41 @@ $(document).ready(function()
     value returned all of the blog posts in our app. Everytime a new blog post is added, the callback function will return all of the posts.
     */
 
-    referencia.on('value',function(datos)
-    {
-        productos=datos.val();
+    referencia.on('value', function(datos) {
+        productos = datos.val();
 
         // Recorremos los productos y los mostramos
-        $.each(productos, function(indice,valor)
-        {
-            var prevProducto='<div class="row"><div class="col-md-3 cabeceraProducto">';
+        $.each(productos, function(indice, valor) {
+            var prevProducto = '<div class="row"><div class="col-md-3 cabeceraProducto">';
 
-            prevProducto+='<h2>'+valor.articulo+'</h2></div>';
+            prevProducto += '<h2>' + valor.articulo + '</h2></div>';
 
-            prevProducto+='<div class="row"><div class="col-md-3 cabeceraProducto">';
-            prevProducto+='<h2>'+valor.precio+'€. </h2></div>';
-            prevProducto+='</div>';
+            prevProducto += '<div class="row"><div class="col-md-3 cabeceraProducto">';
+            prevProducto += '<h2>' + valor.precio + '€. </h2></div>';
+            prevProducto += '</div>';
 
-            prevProducto+='<div class="row">';
-            prevProducto+='<div class="col-md-3 imagenFix">';
-            if (valor.imagen=='NONE')
-                prevProducto+='<img alt="Sin Fotografía"/>';
+            prevProducto += '<div class="row">';
+            prevProducto += '<div class="col-md-3 imagenFix">';
+            if (valor.imagen == 'NONE')
+                prevProducto += '<img alt="Sin Fotografía"/>';
             else
-                prevProducto+='<img src="'+valor.imagen+'"/>';
-            prevProducto+='</div>';
+                prevProducto += '<img src="' + valor.imagen + '"/>';
+            prevProducto += '</div>';
 
-            prevProducto+='<div class="col-md-3">';
-            prevProducto+='<p>'+valor.descripcion+'</p>';
-            prevProducto+='</div>';
-            prevProducto+='</div>';
+            prevProducto += '<div class="col-md-3">';
+            prevProducto += '<p>' + valor.descripcion + '</p>';
+            prevProducto += '</div>';
+            prevProducto += '</div>';
 
-            prevProducto+='</div>';
-            prevProducto+='<div class="row espaciador">';
-            prevProducto+='</div>';
+            prevProducto += '</div>';
+            prevProducto += '<div class="row espaciador">';
+            prevProducto += '</div>';
 
             $(prevProducto).appendTo('#listado');
         });
 
-    },function(objetoError){
-        console.log('Error de lectura:'+objetoError.code);
+    }, function(objetoError) {
+        console.log('Error de lectura:' + objetoError.code);
     });
 
 });
