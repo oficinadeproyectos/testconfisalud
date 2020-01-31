@@ -1,45 +1,41 @@
 // Inicializar la base de datos
 var config = {
-    apiKey: "AIzaSyB73xrbbkWO5IiJcs8HR3vbdQJ171Sh6-w",
-    authDomain: "geoleaf-a1530.firebaseapp.com",
-    databaseURL: "https://geoleaf-a1530.firebaseio.com",
-    projectId: "geoleaf-a1530",
-    storageBucket: "geoleaf-a1530.appspot.com",
-    messagingSenderId: "719308462883"
+    apiKey: "AIzaSyCJBQBZr8lsxCOSe18-SOUw5VUI3n4x2-A",
+    authDomain: "confisalud-3e382.firebaseapp.com",
+    databaseURL: "https://confisalud-3e382.firebaseio.com",
+    projectId: "confisalud-3e382",
+    storageBucket: "confisalud-3e382.appspot.com",
+    messagingSenderId: "629122550546",
+    appId: "1:629122550546:web:0dad7ee8026377517c01cb",
+    measurementId: "G-PDTVJKVZ5H"
 };
 
 firebase.initializeApp(config);
 
-function exito()
-{
+function exito() {
     $("#spinner").html("");
     location.assign('index.html');
 }
 
-$(function()
-{
-    $("#botonLogin").click(function()
-    {
+$(function() {
+    $("#botonLogin").click(function() {
         $("#spinner").html("<img src='img/spinner.gif' style='width:25px; height:25px;'/>");
-        var email=$("#email").val();
-        var password=$("#password").val();
+        var email = $("#email").val();
+        var password = $("#password").val();
 
-        firebase.auth().signInWithEmailAndPassword(email, password).then(exito).catch(function(error)
-        {
+        firebase.auth().signInWithEmailAndPassword(email, password).then(exito).catch(function(error) {
             $("#spinner").html("");
             //console.log(error);
-            alert ("Error detectado:\n\n"+error.message);
+            alert("Error detectado:\n\n" + error.message);
         });
     });
 
-    $("#botonRegistro").click(function()
-    {
+    $("#botonRegistro").click(function() {
         location.assign('registro.html');
     });
 
 
-    $("#botonCancelar").click(function()
-    {
+    $("#botonCancelar").click(function() {
         location.assign('index.html');
     });
 
